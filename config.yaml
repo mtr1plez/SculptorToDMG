@@ -1,0 +1,13 @@
+# config.yaml
+paths:
+  library: "./_library"
+  projects: "./projects"
+
+models:
+  whisper: "small"
+  gemini: "gemini-2.5-flash"
+  clip: "ViT-B/32"
+  face_detection: "buffalo_s"
+
+api_keys:
+  tmdb: "6c4e1849b92d6a813f34cda134db66a8"

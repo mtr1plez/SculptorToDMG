@@ -1,0 +1,52 @@
+{
+  "name": "sculptor-pro",
+  "private": true,
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir dist-vite",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    
+    "electron": "wait-on tcp:5173 && cross-env ELECTRON_START_URL=http://localhost:5173 electron .",
+    "dev:electron": "concurrently -k \"npm run dev\" \"npm run electron\"",
+    
+    "build:backend": "cd .. && python build_backend.py",
+    "build:frontend": "npm run build",
+    "build:electron": "electron-builder --mac --config electron-builder.json",
+    
+    "dist": "npm run build:frontend && npm run build:backend && npm run build:electron",
+    "dist:mac": "npm run dist",
+    "dist:win": "npm run build:frontend && npm run build:backend && electron-builder --win"
+  },
+  "dependencies": {
+    "lucide-react": "^0.562.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@tailwindcss/cli": "^4.1.18",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "autoprefixer": "^10.4.23",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^39.2.7",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.2.4",
+    "wait-on": "^9.0.3"
+  },
+  "build": {
+    "extends": "./electron-builder.json"
+  }
+}

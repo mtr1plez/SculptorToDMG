@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: #09090b; /* Темный фон по умолчанию */
+  color: #fafafa;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  overflow: hidden; /* Убираем скролл самого окна */
+}
